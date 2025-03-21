@@ -61,7 +61,7 @@ class FSImage extends FSFile {
 				$this->imageHandle = imagecreatefromgif($this->getFilename());
 				break;
 			case IMAGETYPE_BMP:
-				$this->imageHandle = imagecreatefrombmp($this->getFilename());
+				$this->imageHandle = imagecreatefrombmpCustom($this->getFilename());
 				break;
 			default:
 				throw new FSImageException('Unsupported image type');
@@ -489,7 +489,7 @@ class FSImageException extends CException {
 
 }
 
-function imagecreatefrombmp($sFile) {
+function imagecreatefrombmpCustom($sFile) {
 	//    Load the image into a string
 	$file = fopen($sFile, "rb");
 	$read = fread($file, 10);
